@@ -1,0 +1,882 @@
+/**
+ * Jajal Medical Case Management - Enterprise Clinical Design System
+ * Theme: Precision Patient-Specific Implants & Surgical Lifecycle
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    /* Brand Colors */
+    --jm-primary: #0284c7;
+    --jm-primary-hover: #0369a1;
+    --jm-primary-light: #e0f2fe;
+    --jm-accent: #06b6d4;
+    --jm-accent-light: #ecfeff;
+    
+    /* Neutral / Slate Palette */
+    --jm-slate-900: #0f172a;
+    --jm-slate-800: #1e293b;
+    --jm-slate-700: #334155;
+    --jm-slate-600: #475569;
+    --jm-slate-500: #64748b;
+    --jm-slate-400: #94a3b8;
+    --jm-slate-300: #cbd5e1;
+    --jm-slate-200: #e2e8f0;
+    --jm-slate-100: #f1f5f9;
+    --jm-slate-50: #f8fafc;
+    
+    /* Background & Surfaces */
+    --jm-bg: #f8fafc;
+    --jm-card-bg: #ffffff;
+    --jm-border: #e2e8f0;
+    --jm-border-subtle: #edf2f7;
+    
+    /* Status Colors */
+    --jm-status-draft: #64748b;
+    --jm-status-draft-bg: #f1f5f9;
+    --jm-status-planning: #0284c7;
+    --jm-status-planning-bg: #e0f2fe;
+    --jm-status-in-review: #d97706;
+    --jm-status-in-review-bg: #fef3c7;
+    --jm-status-approved: #059669;
+    --jm-status-approved-bg: #dcfce7;
+    --jm-status-completed: #16a34a;
+    --jm-status-completed-bg: #dcfce7;
+    --jm-status-cancelled: #dc2626;
+    --jm-status-cancelled-bg: #fee2e2;
+
+    /* Priority Colors */
+    --jm-priority-high: #b91c1c;
+    --jm-priority-high-bg: #fee2e2;
+    --jm-priority-medium: #c2410c;
+    --jm-priority-medium-bg: #ffedd5;
+    --jm-priority-low: #334155;
+    --jm-priority-low-bg: #f1f5f9;
+
+    /* Shadows */
+    --jm-shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+    --jm-shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+    --jm-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+    --jm-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+    --jm-shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+
+    /* Form Controls */
+    accent-color: var(--jm-primary);
+}
+
+/* Global Typography & Body */
+body {
+    background-color: var(--jm-bg);
+    color: var(--jm-slate-800);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+/* Modern Navbar */
+.jm-navbar {
+    background: linear-gradient(180deg, #0f172a 0%, #111c34 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.25);
+    padding: 0.75rem 0;
+    position: relative;
+    z-index: 1020;
+}
+
+.jm-navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0284c7 0%, #06b6d4 50%, #3b82f6 100%);
+}
+
+.jm-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.jm-brand-icon-box {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.25rem;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jm-brand-logo:hover .jm-brand-icon-box {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+}
+
+.jm-brand-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    display: block;
+    line-height: 1.2;
+}
+
+.jm-brand-subtitle {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    display: block;
+}
+
+.jm-nav-link {
+    color: #94a3b8 !important;
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.85rem !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.jm-nav-link:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.jm-nav-link.active {
+    color: #ffffff !important;
+    background: rgba(2, 132, 199, 0.18);
+    border: 1px solid rgba(2, 132, 199, 0.35);
+    font-weight: 600;
+}
+
+.jm-system-status-pill {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+    padding: 0.3rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.jm-pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: jm-pulse 1.8s infinite;
+}
+
+@keyframes jm-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+.jm-user-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    padding: 0.25rem 0.75rem 0.25rem 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f1f5f9;
+}
+
+.jm-avatar-badge {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jm-role-badge-admin {
+    background: #0284c7;
+    color: #ffffff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.jm-role-badge-viewer {
+    background: #475569;
+    color: #ffffff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Cards & Containers */
+.jm-card {
+    background: var(--jm-card-bg);
+    border: 1px solid var(--jm-border);
+    border-radius: 14px;
+    box-shadow: var(--jm-shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.jm-card:hover {
+    box-shadow: var(--jm-shadow-md);
+}
+
+.jm-card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--jm-border);
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.jm-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--jm-slate-900);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.jm-card-body {
+    padding: 1.4rem;
+}
+
+/* Metric / KPI Stat Cards */
+.jm-stat-card {
+    background: #ffffff;
+    border: 1px solid var(--jm-border);
+    border-radius: 14px;
+    padding: 1.25rem 1.1rem;
+    position: relative;
+    box-shadow: var(--jm-shadow-xs);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    overflow: hidden;
+}
+
+.jm-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--stat-accent, #0284c7);
+    border-radius: 14px 14px 0 0;
+}
+
+.jm-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--jm-shadow-lg);
+    border-color: var(--jm-slate-300);
+    color: inherit;
+}
+
+.jm-stat-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    background-color: var(--stat-bg, #f1f5f9);
+    color: var(--stat-accent, #0284c7);
+}
+
+.jm-stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--jm-slate-900);
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.jm-stat-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--jm-slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Status Badges */
+.jm-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-width: 1px;
+    border-style: solid;
+    white-space: nowrap;
+}
+
+.jm-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.jm-status-badge-draft {
+    background-color: var(--jm-status-draft-bg);
+    color: var(--jm-status-draft);
+    border-color: #cbd5e1;
+}
+.jm-status-badge-draft .jm-status-dot {
+    background-color: var(--jm-status-draft);
+}
+
+.jm-status-badge-planning {
+    background-color: var(--jm-status-planning-bg);
+    color: var(--jm-status-planning);
+    border-color: #bae6fd;
+}
+.jm-status-badge-planning .jm-status-dot {
+    background-color: var(--jm-status-planning);
+    box-shadow: 0 0 6px rgba(2, 132, 199, 0.6);
+}
+
+.jm-status-badge-in-review {
+    background-color: var(--jm-status-in-review-bg);
+    color: #b45309;
+    border-color: #fde68a;
+}
+.jm-status-badge-in-review .jm-status-dot {
+    background-color: #d97706;
+    box-shadow: 0 0 6px rgba(217, 119, 6, 0.6);
+}
+
+.jm-status-badge-approved {
+    background-color: var(--jm-status-approved-bg);
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+.jm-status-badge-approved .jm-status-dot {
+    background-color: #16a34a;
+    box-shadow: 0 0 6px rgba(22, 163, 74, 0.6);
+}
+
+.jm-status-badge-completed {
+    background-color: #f0fdf4;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+.jm-status-badge-completed .jm-status-dot {
+    background-color: #15803d;
+}
+
+.jm-status-badge-cancelled {
+    background-color: var(--jm-status-cancelled-bg);
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+.jm-status-badge-cancelled .jm-status-dot {
+    background-color: #dc2626;
+}
+
+/* Priority Badges */
+.jm-priority-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid transparent;
+}
+
+.jm-priority-high {
+    background-color: var(--jm-priority-high-bg);
+    color: var(--jm-priority-high);
+    border-color: #fecaca;
+}
+
+.jm-priority-medium {
+    background-color: var(--jm-priority-medium-bg);
+    color: var(--jm-priority-medium);
+    border-color: #fed7aa;
+}
+
+.jm-priority-low {
+    background-color: var(--jm-priority-low-bg);
+    color: var(--jm-priority-low);
+    border-color: #cbd5e1;
+}
+
+/* Patient Reference HIPAA Badge */
+.jm-patient-code-badge {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Surgeon Avatar / Name */
+.jm-doctor-name {
+    font-weight: 600;
+    color: var(--jm-slate-900);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.jm-doctor-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #e0f2fe;
+    color: #0284c7;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tables */
+.jm-table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.jm-table thead th {
+    background-color: #f8fafc;
+    color: var(--jm-slate-600);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--jm-border);
+}
+
+.jm-table tbody td {
+    padding: 0.95rem 1rem;
+    border-bottom: 1px solid var(--jm-border-subtle);
+    color: var(--jm-slate-700);
+    font-size: 0.875rem;
+}
+
+.jm-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.jm-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Surgical Pipeline Progress Bar */
+.jm-pipeline-container {
+    background: #ffffff;
+    border: 1px solid var(--jm-border);
+    border-radius: 14px;
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.jm-pipeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.jm-pipeline-track {
+    display: flex;
+    gap: 0.4rem;
+    height: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #e2e8f0;
+    margin-bottom: 0.85rem;
+}
+
+.jm-pipeline-segment {
+    height: 100%;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 4px;
+}
+
+.jm-pipeline-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    font-size: 0.8125rem;
+}
+
+.jm-pipeline-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--jm-slate-600);
+}
+
+/* Case Detail Lifecycle Stepper */
+.jm-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 1.5rem 1rem;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid var(--jm-border);
+    margin-bottom: 1.75rem;
+    overflow-x: auto;
+}
+
+.jm-stepper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    right: 40px;
+    height: 3px;
+    background: #e2e8f0;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.jm-stepper-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 100px;
+    text-align: center;
+}
+
+.jm-stepper-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 4px #ffffff;
+}
+
+.jm-stepper-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.jm-stepper-item.completed .jm-stepper-icon {
+    background: #10b981;
+    border-color: #10b981;
+    color: #ffffff;
+}
+
+.jm-stepper-item.completed .jm-stepper-label {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.jm-stepper-item.active .jm-stepper-icon {
+    background: #0284c7;
+    border-color: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 0 0 5px rgba(2, 132, 199, 0.25);
+    transform: scale(1.1);
+}
+
+.jm-stepper-item.active .jm-stepper-label {
+    color: #0284c7;
+    font-weight: 800;
+}
+
+/* Quick Filter Pills (Directory) */
+.jm-filter-pills {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.jm-filter-pill {
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--jm-slate-600);
+    background: #ffffff;
+    border: 1px solid var(--jm-border);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.jm-filter-pill:hover {
+    color: var(--jm-primary);
+    border-color: var(--jm-primary);
+    background-color: var(--jm-primary-light);
+}
+
+.jm-filter-pill.active {
+    color: #ffffff;
+    background-color: var(--jm-primary);
+    border-color: var(--jm-primary);
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+
+/* Form Controls & Inputs */
+.jm-form-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--jm-slate-700);
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+.jm-form-control, .form-control, .form-select {
+    border: 1px solid var(--jm-border);
+    border-radius: 9px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.9375rem;
+    color: var(--jm-slate-800);
+    background-color: #ffffff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.jm-form-control:focus, .form-control:focus, .form-select:focus {
+    border-color: var(--jm-primary);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    outline: none;
+}
+
+.input-group-text {
+    border: 1px solid var(--jm-border);
+    background-color: #f8fafc;
+    color: var(--jm-slate-500);
+    border-radius: 9px;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.55rem 1.15rem;
+    border-radius: 9px;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    transform: translateY(-1px);
+    color: #ffffff;
+}
+
+.btn-outline-primary {
+    border-color: #0284c7;
+    color: #0284c7;
+    font-weight: 600;
+    border-radius: 9px;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0284c7;
+    border-color: #0284c7;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+    border-color: #cbd5e1;
+    color: #475569;
+    font-weight: 600;
+    border-radius: 9px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+    color: #1e293b;
+}
+
+.btn-outline-danger {
+    border-color: #fca5a5;
+    color: #dc2626;
+    font-weight: 600;
+    border-radius: 9px;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: #ffffff;
+}
+
+/* Modals */
+.modal-content {
+    border: 1px solid var(--jm-border);
+    border-radius: 16px;
+    box-shadow: var(--jm-shadow-xl);
+    overflow: hidden;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--jm-border);
+    padding: 1.25rem 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--jm-border);
+    padding: 1rem 1.5rem;
+}
+
+/* Suggestion Chips */
+.jm-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.jm-chip:hover {
+    background: #e0f2fe;
+    color: #0369a1;
+    border-color: #bae6fd;
+}
+
+/* Footer */
+.jm-footer {
+    margin-top: auto;
+    background-color: #ffffff;
+    border-top: 1px solid var(--jm-border);
+    padding: 1.5rem 0;
+    color: var(--jm-slate-500);
+    font-size: 0.8125rem;
+}
+
+/* PRINT STYLES FOR SURGICAL CASE REPORTS */
+@media print {
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    .jm-navbar, .jm-footer, .btn, .d-print-none, .alert, .modal {
+        display: none !important;
+    }
+
+    .container, .col-lg-9, .col-12 {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .jm-card {
+        border: 1px solid #000000 !important;
+        box-shadow: none !important;
+    }
+
+    .jm-print-header {
+        display: block !important;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #000000;
+    }
+
+    .jm-print-footer {
+        display: block !important;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px dashed #666666;
+    }
+}
